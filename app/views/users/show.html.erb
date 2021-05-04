@@ -35,6 +35,12 @@
 				<% end %>
 			<% end %>
 
+			<% if current_user != @user %>
+        <%= link_to 'chatを始める', chat_path(@user.id)%>
+      <% end %>
+
+
+
       <% if current_user == @user %>
         <div class="row">
           <%= link_to '', edit_user_path(@user.id), class: 'btn btn-outline-secondary btn-block fas fa-user-cog' %>
