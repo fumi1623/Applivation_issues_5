@@ -1,0 +1,50 @@
+<div class="container">
+  <div class="row chat_table">
+
+    <div class="col-4">
+      <h3 id="room" data-room="<%= @room.id %>" data-user="<%= current_user.id %>"><%= @user.name %> さんとのチャット</h3>
+      <%= form_with model: @chat do |f| %>
+        <%= f.text_field :message %>
+        <%= f.hidden_field :room_id %>
+        <%= f.submit %>
+      <% end %>
+    </div>
+
+    <div class="col chat_result_box">
+      <table class="table table-striped">
+        <thead class="thead-dark">
+          <tr>
+            <th style="text-align: left; font-size: 20px;">
+              <%= attachment_image_tag current_user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg", size:'60x60' %></br>
+              <%= current_user.name %>
+            </th>
+            <th style="text-align: right; font-size: 20px;">
+              <%= attachment_image_tag @user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg", size:'60x60' %></br>
+              <%= @user.name %>
+            </th>
+          </tr>
+        </thead>
+        <tbody class="message">
+          <% @chats.each do |chat| %>
+            <% if chat.user_id == current_user.id %>
+              <tr>
+                <th>
+                  <p style="text-align: left;"><%= chat.message %></p>
+                </th>
+                <th></th>
+              </tr>
+            <% else %>
+              <tr>
+                <th></th>
+                <th>
+                  <p style="text-align: right;"><%= chat.message %></p>
+                </th>
+              </tr>
+            <% end %>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</div>

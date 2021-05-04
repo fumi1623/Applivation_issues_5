@@ -1,0 +1,12 @@
+<table class="table table-striped">
+  <tbody>
+    <% @chats.each do |chat| %>
+    <tr>
+      <th scope="row"><%= attachment_image_tag chat.user, :profile_image, :fill, 40, 40, fallback: "no_image.jpg", size:'40x40' %></br>
+      <%= chat.user.name %></th>
+      <td><%= chat.message %></td>
+
+    </tr>
+    <% end %>
+  </tbody>
+</table>
