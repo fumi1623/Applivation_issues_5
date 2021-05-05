@@ -5,12 +5,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_account_update_params, only: [:update]
 
   def create
-    #スーパークラス(devise)のcreateアクションを呼ぶ
+    # スーパークラス(devise)のcreateアクションを呼ぶ
     super
-    #WelcomeMailerクラスのsend_when_signupメソッドを呼び、POSTから受け取ったuserのemailとnameを渡す
-    WelcomeMailer.send_when_signup(params[:user][:email],params[:user][:name]).deliver
+    # WelcomeMailerクラスのsend_when_signupメソッドを呼び、POSTから受け取ったuserのemailとnameを渡す
+    WelcomeMailer.send_when_signup(params[:user][:email], params[:user][:name]).deliver
   end
-
 
   # GET /resource/sign_up
   # def new
