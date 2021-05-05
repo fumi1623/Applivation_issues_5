@@ -12,5 +12,4 @@ class RelationshipsController < ApplicationController
     follow.destroy
     redirect_to request.referer
   end
-
 end

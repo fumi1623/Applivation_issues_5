@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-
   before_action :correct_user, only: [:edit, :update]
 
   def index
@@ -17,11 +16,11 @@ class UsersController < ApplicationController
   def edit
     @user = User.find(params[:id])
     # if @user == current_user
-      render "edit"
+    render "edit"
     # else
     #   redirect_to user_path(current_user.id)
     # end
-    #beforeで制限したため、editのif部分は不要
+    # beforeで制限したため、editのif部分は不要
   end
 
   def update
@@ -56,5 +55,4 @@ class UsersController < ApplicationController
       redirect_to user_path(current_user.id)
     end
   end
-
 end
